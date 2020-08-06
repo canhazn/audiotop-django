@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from speaker.models import Product as SpeakerProduct
 
-# Create your views here.
+
 def homePage(request):
     return render(request, 'index.html')
 

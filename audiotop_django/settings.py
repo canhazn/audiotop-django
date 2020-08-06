@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from django_summernote import utils
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -37,9 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
-    'core',
+    'django_cleanup.apps.CleanupConfig',
+
+    'speaker',
+    'project',
     'browser',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +128,49 @@ USE_TZ = True
 
 STATIC_URL = '/browser/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'browser/static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'browser/staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# # Sumernote config
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# from project.models import Image
+
+# SUMMERNOTE_CONFIG = {
+#     "attachment_model": ""
+# }
+
+def custom_get_attchment_model():
+    """
+    Overwrite to get addtechment_model setting from django_settings not from 
+    """
+    try:
+        from django_summernote.models import AbstractAttachment
+        from django.apps import apps
+        from django.conf import settings as django_settings
+        summernote_setting = getattr(django_settings, 'SUMMERNOTE_CONFIG', {})
+        if not "attachment_model" in summernote_setting:
+            summernote_setting["attachment_model"] = 'django_summernote.Attachment'
+            print(summernote_setting["attachment_model"])
+        klass = apps.get_model(summernote_setting["attachment_model"])
+
+        if not issubclass(klass, AbstractAttachment):
+            raise ImproperlyConfigured(
+                "SUMMERNOTE_CONFIG['attachment_model'] refers to model '%s' that is not "
+                "inherited from 'django_summernote.models.AbstractAttachment'" % config[
+                    "attachment_model"]
+            )
+        return klass
+    except ValueError:
+        raise ImproperlyConfigured(
+            "SUMMERNOTE_CONFIG['attachment_model'] must be of the form 'app_label.model_name'")
+    except LookupError:
+        raise ImproperlyConfigured(
+            "SUMMERNOTE_CONFIG['attachment_model'] refers to model '%s' that has not been installed" % config[
+                "attachment_model"]
+        )
+
+
+utils.get_attachment_model = custom_get_attchment_model
