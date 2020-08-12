@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/project_detail.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'project-list' %}">Dự án nổi bật</a></li>
+                <li>{{ project.title | truncatechars:20 }}</li>
+            </ol>
+            <h2>{{ project.title | truncatechars:50 }}</h2>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section class="portfolio-details">
+        <div class="container">
+
+            <div class="portfolio-details-container">
+                <div class="owl-carousel portfolio-details-carousel">
+                    <img src="/media/{{ project.thumb }}" class="img-fluid" alt="">
+                    {% for image in project.images.all %}
+                    {% comment %} <img src="/media/{{ image.file }}" alt=""> {% endcomment %}
+                    {% endfor %}
+                </div>
+
+                <div class="portfolio-info">
+                    <h3>Thông tin dự án</h3>
+                    <ul>
+                        {% for tag in project.tags.all %}
+                        <li><strong>Category</strong>: {{ tag.title }}</li>
+                        {% endfor %}
+                        {% if project.client %}
+                        <li><strong>Client</strong>: {{ project.client }}</li>
+                        {% endif %}
+
+                        <li><strong>Project date</strong>: {{ project.created_on }}</li>
+
+                        {% if project.facebookurl %}
+                        <li><strong>Facebook URL</strong>: <a href="{{ project.facebookurl }}"></a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="portfolio-description">
+                <h2>{{ project.title }}</h2>
+                <p>
+                    {{ project.content |safe}}
+                </p>
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+{% endblock content %}

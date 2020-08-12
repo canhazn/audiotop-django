@@ -1,29 +1,46 @@
 {% extends 'base.html' %}
 {%load static %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/project_list.css' %}">
+{% endblock extrahead %}
 
 {% block content %}
 <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'trang-chu' %}">Trang chủ</a></li>
+                <li>Thiết bị âm thanh</li>
+            </ol>
+            <h2>Thiết bị âm thanh</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <section class="inner-page pt-3">
+        <div class="container">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+                <div class="row">
+                    {% for product in products %}
+                    <a href="{% url 'speaker-detail' product.slug %}"
+                        class="col-xl-3 col-md-4 col-sm-6 col-6 d-flex align-items-stretch" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <div class="icon-box mb-4">
+                            <img src="{{ product.thumb }}" alt="">
+                            <div class="p-3">
+                                <h4>{{ product.title }}</h4>
+                                {% comment %} {{ product }} {% endcomment %}
+                                {% for tag in product.tags %}
+                                <p>{{ tag.name }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
 
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-4 col-lg-6 bg-primary">
-                test 1 speaker list
-            </div>
-            <div class="col-xl-4 col-lg-6 bg-primary">
-                test 1
-            </div>
-            <div class="col-xl-4 col-lg-6 bg-primary">
-                test 1
-            </div>
-            <div class="col-xl-4 col-lg-6 bg-primary">
-                test 1
-            </div>
-            <div class="col-xl-4 col-lg-6 bg-primary">
-                test 1
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </main>
 {% endblock content %}

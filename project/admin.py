@@ -36,6 +36,7 @@ def get_img_urls(html_content, obj):
             print(image['src'][7:])
             imageObject = models.Image.objects.get(file=image['src'][7:])
             imageObject.project = obj
+            print(type(obj).__name__)
             imageObject.save()
             print(imageObject)
     return img_urls

@@ -1,0 +1,9 @@
+/* centerd client image */
+.owl-carousel .owl-stage {
+    display: flex;
+    align-items: center;
+}
+
+.owl-carousel .caption {
+    text-align: center;
+}

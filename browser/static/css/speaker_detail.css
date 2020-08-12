@@ -1,0 +1,14 @@
+/* porfolio filter custom */
+.tag {
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #313030;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 50px;
+}

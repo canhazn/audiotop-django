@@ -18,7 +18,29 @@ def change_sumernote_attchment_model():
     setattr(django_settings, 'SUMMERNOTE_CONFIG', {
         "attachment_model": ATTACHMENT_MODEL
     })
-    print("Changed attchment model", getattr(django_settings, 'SUMMERNOTE_CONFIG', {}))
+
+def get_img_urls(html_content, obj):
+    """
+    Return array of url of images attachment of main model
+    """
+    img_urls = []
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    imgs = soup.find_all('img')
+
+    for image in imgs:
+        if image['src'].find("audiotop") != -1:
+            img_urls.append(image['src'])
+            # Remove string /media/
+            print(image['src'][7:])
+            imageObject = models.Image.objects.get(file=image['src'][7:])
+            projectObject = models.Product.objects.get(slug=obj.slug)
+            imageObject.project = projectObject
+            print(type(obj).__name__)
+            imageObject.save()
+            print(imageObject)
+    return img_urls
+
 
 
 class ImageAdmin(AttachmentAdmin):
@@ -35,13 +57,13 @@ class ImageAdmin(AttachmentAdmin):
     get_foreignkey.short_description = "Product"
 
 
-class TagAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', )}
 
 
 class ProductAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
-    list_display = ('slug', 'title', 'get_tags', 'get_thumb')
+    list_display = ('slug', 'title', 'get_tags',  'get_thumb')
     prepopulated_fields = {'slug': ('title', )}
 
     # Change django sumernote attachment object every time init form
@@ -51,16 +73,21 @@ class ProductAdmin(SummernoteModelAdmin):
         return form
 
     def get_tags(self, obj):
-        return ",".join([tag.title for tag in obj.tags.all()])
+        return ",".join([tag.name for tag in obj.tags.all()])
 
     get_tags.short_description = "TAGS"
 
     def get_thumb(self, obj):
         return format_html('<img style="width:200px;" src="{}"/>'.format(obj.thumb.url))
-
     get_thumb.short_description = "Thumb"
+
+    def save_model(self, request, obj, form, change):
+        html_content = obj.content
+        super().save_model(request, obj, form, change)
+        get_img_urls(html_content, obj)
+
 
 
 admin.site.register(models.Image, ImageAdmin)
-admin.site.register(models.Tag, TagAdmin)
+admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Product, ProductAdmin)

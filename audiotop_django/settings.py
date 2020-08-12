@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'taggit',
+    'taggit_autosuggest',
     'django_cleanup.apps.CleanupConfig',
 
     'speaker',
