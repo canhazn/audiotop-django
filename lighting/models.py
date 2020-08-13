@@ -8,13 +8,13 @@ from django_summernote.utils import get_attachment_storage
 
 def path_file_name(instance, filename):
     newName = "_".join(filter(None, (instance.slug, filename)))
-    return "%s/%s/%s" % ('speakers', instance.slug, newName)
+    return "%s/%s/%s" % ('lightings', instance.slug, newName)
 
 
 def path_attachment_file_name(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s_%s.%s" % ("audiotop", uuid.uuid4(), ext)
-    return os.path.join("speakers", "attachment", filename)
+    return os.path.join("lightings", "attachment", filename)
 
 
 class Category(models.Model):
@@ -26,7 +26,7 @@ class Category(models.Model):
         return str(self.title)
 
 
-class Product(models.Model):
+class Produkt(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     slug = models.SlugField(max_length=200, null=False, blank=False)
     content = models.TextField(null=False, blank=False)
@@ -42,6 +42,6 @@ class Product(models.Model):
 
 class Image(AbstractAttachment):
     product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name="images", null=True, blank=True)
+        Produkt, on_delete=models.CASCADE, related_name="images", null=True, blank=True)
     file = models.FileField(upload_to=path_attachment_file_name,
                             storage=get_attachment_storage())

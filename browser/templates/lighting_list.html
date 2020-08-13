@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/lighting_list.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'trang-chu' %}">Trang chủ</a></li>
+                <li>Thiết bị ánh sáng</li>
+            </ol>
+            <h2>Thiết bị ánh sáng</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-3">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3" data-aos="fade-up" data-aos-delay="100">
+                        <h4>TUYỂN ĐẠI LÝ TOÀN QUỐC</h4>
+                        <strong>Hotline: MR.Việt:</strong> +84 36 5148888<br>                        
+                    </div>
+                    <div class="portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                        <div class="portfolio-item filter-app">
+                            <img src="/browser/static/img/mach-dieu-khien-moving-audiotop.jpg" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <span>Mạch điều khiển moving Audio Top</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="videos-anh-sang my-3">
+                        <p class="title text-center">Những màn trình diễn đỉnh cao:</p>
+                        <div class='video'> <iframe src='https://www.youtube.com/embed/IBcakHjGa10' frameborder='0'
+                                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                                allowfullscreen></iframe> </div>
+                        <div class='video'> <iframe src='https://www.youtube.com/embed/vvP7BePdMvw' frameborder='0'
+                                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-iVCn-picture'
+                                allowfullscreen></iframe> </div>
+                        <div class='video'> <iframe src='https://www.youtube.com/embed/vWsS2TMbVCY' frameborder='0'
+                                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                                allowfullscreen></iframe> </div>
+                        <a href="https://www.youtube.com/watch?v=IBcakHjGa10&list=PLvTOq0EIMIdymJ-Di31y6IFVSmRdHQPLH">
+                            Xem thêm...</a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                    <div class="row no-gutters">
+                        {% for product in products %}
+                        <a href="{% url 'lighting-detail' product.slug %}"
+                            class="col-md-4 col-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon-box mb-4">
+                                <img class="product-thumb" src="{{ product.thumb }}" alt="">
+                                <div class="p-3">
+                                    <h4>{{ product.title }}</h4>
+                                    {% comment %} {{ product }} {% endcomment %}
+                                    {% for tag in product.tags %}
+                                    <p>{{ tag.name }}</p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock content %}

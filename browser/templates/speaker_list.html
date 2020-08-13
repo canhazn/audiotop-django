@@ -2,7 +2,7 @@
 {%load static %}
 
 {% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/project_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/speaker_list.css' %}">
 {% endblock extrahead %}
 
 {% block content %}
@@ -20,7 +20,7 @@
     <section class="inner-page pt-3">
         <div class="container">
             <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
+                <div class="row no-gutters">
                     {% for product in products %}
                     <a href="{% url 'speaker-detail' product.slug %}"
                         class="col-xl-3 col-md-4 col-sm-6 col-6 d-flex align-items-stretch" data-aos="fade-up"

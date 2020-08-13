@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
 
     'speaker',
+    'lighting',
     'project',
     'browser',
     'django_summernote',

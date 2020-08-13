@@ -23,9 +23,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('taggit_autosuggest/', include("taggit_autosuggest.urls")),
+    
     path('', include('browser.urls')),
     path('', include('project.urls')),
-    path('', include('speaker.urls'))
+    path('', include('speaker.urls')),
+    path('', include('lighting.urls'))
 ]
 
 if settings.DEBUG:
