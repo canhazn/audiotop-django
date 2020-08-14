@@ -27,7 +27,8 @@ urlpatterns = [
     path('', include('browser.urls')),
     path('', include('project.urls')),
     path('', include('speaker.urls')),
-    path('', include('lighting.urls'))
+    path('', include('lighting.urls')),
+    path('', include('blog.urls'))
 ]
 
 if settings.DEBUG:

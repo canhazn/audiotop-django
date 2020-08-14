@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'speaker',
     'lighting',
     'project',
+    'blog',
     'browser',
     'django_summernote',
 ]

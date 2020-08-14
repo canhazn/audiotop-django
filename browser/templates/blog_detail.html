@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/lighting_list.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'blog-list' %}">Blog</a></li>
+                <li>{{ blog.title | truncatechars:20 }}</li>
+            </ol>
+            <h2>{{ blog.title | truncatechars:50 }}</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="blog" class="blog">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+
+                        <div class="entry-img">
+                            <img src="/media/{{ blog.thumb }}" alt="" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            <a href="{% url 'blog-detail' blog.slug %}">{{ blog.title }}</a>
+                        </h2>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="">Luan
+                                        audio</a></li>
+                                <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a
+                                        href=""><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            {{ blog.content | safe }}
+                        </div>
+
+                        <div class="entry-footer clearfix">
+                            <div class="float-left">
+                                <i class="icofont-folder"></i>
+                                <ul class="cats">
+                                    <li><a href="#">Business</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="float-right share">
+                                <a href="" title="Share on Twitter"><i class="icofont-twitter"></i></a>
+                                <a href="" title="Share on Facebook"><i class="icofont-facebook"></i></a>
+                                <a href="" title="Share on Instagram"><i class="icofont-instagram"></i></a>
+                            </div>
+
+                        </div>
+
+                    </article><!-- End blog entry -->
+
+                </div><!-- End blog entries list -->
+
+                <div class="col-lg-4">
+
+                    <div class="sidebar">
+
+                        <h3 class="sidebar-title">Search</h3>
+                        <div class="sidebar-item search-form">
+                            <form action="">
+                                <input type="text">
+                                <button type="submit"><i class="icofont-search"></i></button>
+                            </form>
+
+                        </div>
+
+                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <div class="sidebar-item recent-posts">
+                            {% for blog in related_blog %}
+                            <div class="post-item clearfix">
+                                <img src="/media/{{ blog.thumb }}" alt="">
+                                <h4><a href="{% url 'blog-detail' blog.slug %}">{{ blog.title }}</a></h4>
+                                <time datetime="2020-01-01">Luan audio</time>
+                            </div>
+                            {% endfor %}
+
+                        </div><!-- End sidebar recent posts-->
+
+                    </div><!-- End sidebar -->
+                </div>
+            </div>
+        </div>
+    </section><!-- End Blog Section -->
+</main>
+{% endblock content %}
