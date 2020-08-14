@@ -1,2 +1,2 @@
-web: gunicorn blogchancuu.wsgi --log-file -
+web: gunicorn audiotop_django.wsgi --log-file -
 
