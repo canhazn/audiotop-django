@@ -12,7 +12,7 @@
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container" data-aos="fade-in">
         <h1>Chào mừng đến với Audio Top</h1>
-        <h2>Chuyên thiết kế hệ thống âm thanh - ánh sáng karaoke, bar, phòng trà...</h2>        
+        <h2>Chuyên thiết kế hệ thống âm thanh - ánh sáng karaoke, bar, phòng trà...</h2>
     </div>
 </section>
 <!-- End Hero -->
@@ -29,7 +29,8 @@
                     <div class="content">
                         <h3>Tại sao chọn Audio Top?</h3>
                         <p>
-                            Thể hiện sự chuyên nghiệp và sáng tạo bằng việc tạo ra những hệ thống âm thanh chất lượng.
+                            Hệ thống âm thanh hay sẽ đem về khách hàng cho bạn. Audio Top tạo ra những hệ thống âm thanh
+                            chất lượng làm hài lòng mọi đối tượng khách hàng.
                             Vì mục tiêu phát triển bền vững của khách hàng mà quyết định hợp tác. Nói không với sản phẩm
                             kém chất lượng, cam kết bảo hành - hỗ trợ 24/7
                         </p>
@@ -96,22 +97,20 @@
                     <div class="icon-box" data-aos="fade-up">
                         <div class="icon"><i class="bx bx-fingerprint"></i></div>
                         <h4 class="title"><a href="">Người thật việc thật</a></h4>
-                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                            excepturi sint occaecati cupiditate non provident</p>
+                        <p class="description">Đảm bảo sản phẩm nguồn gốc rõ ràng, đạt chuẩn, chất lượng cao</p>
                     </div>
 
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="bx bx-gift"></i></div>
                         <h4 class="title"><a href="">Hơn 5 năm kinh nghiệm</a></h4>
-                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                            praesentium voluptatum deleniti atque</p>
+                        <p class="description">Đa qua đào tạo bài bản về âm thanh, hoàn thành nhiều công trình lớn nhỏ
+                        </p>
                     </div>
 
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="bx bx-atom"></i></div>
                         <h4 class="title"><a href="">Mạng lưới khách hàng từ bắc vào nam</a></h4>
-                        <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis
-                            odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                        <p class="description">Được sự tin tưởng, đánh giá tích cực từ khách hàng khắp cả nước </p>
                     </div>
 
                 </div>
@@ -219,132 +218,25 @@
         <div class="container">
 
             <div class="section-title">
-                <h2 data-aos="fade-up">Dự án nổi bật</h2>
-                <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
-                    eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                    suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-            </div>
-
-            <div class="row" data-aos="fade-up" data-aos-delay="100">
-                <div class="col-lg-12 d-flex justify-content-center">
-                    <ul id="portfolio-flters">
-                        <li data-filter="*" class="filter-active">Tất cả</li>
-                        <li data-filter=".filter-app">Karaoke</li>
-                        <li data-filter=".filter-card">Bar</li>
-                        <li data-filter=".filter-web">Phòng trà</li>
-                    </ul>
-                </div>
+                <a href="{% url 'project-list' %}">
+                    <h2 data-aos="fade-up">Dự án nổi bật</h2>
+                </a>
+                <p data-aos="fade-up">Audio Top thi công nhiều loại công trình: Karaoke, bar, tiệc cưới, phòng trà, âm
+                    thanh gia đình...
+                    Mỗi một công trình đều có điểm ưu việt riêng nên đều được Audio Top chuẩn bị kĩ càng,
+                    đầu tư nhiều tâm huyết để đưa ra kết quả tốt nhất cho khách hàng.
+                </p>
             </div>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
+                {% for project in projects %}
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <p>App</p>
-                        <a href="{% static 'img/portfolio/portfolio-1.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
+                    <img src="{{ project.thumb }}" class="img-fluid w-100" alt="">
+                    <a class="portfolio-info" href="{% url 'project-detail' project.slug %}">
+                        <h4>{{ project.title }}</h4>
+                    </a>
                 </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{% static 'img/portfolio/portfolio-2.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="{% static 'img/portfolio/portfolio-3.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 2</h4>
-                        <p>App</p>
-                        <a href="{% static 'img/portfolio/portfolio-3.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="{% static 'img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 2</h4>
-                        <p>Card</p>
-                        <a href="{% static 'img/portfolio/portfolio-4.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="{% static 'img/portfolio/portfolio-5.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 2</h4>
-                        <p>Web</p>
-                        <a href="{% static 'img/portfolio/portfolio-5.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <img src="{% static 'img/portfolio/portfolio-6.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>App 3</h4>
-                        <p>App</p>
-                        <a href="{% static 'img/portfolio/portfolio-6.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="{% static 'img/portfolio/portfolio-7.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 1</h4>
-                        <p>Card</p>
-                        <a href="{% static 'img/portfolio/portfolio-7.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                    <img src="{% static 'img/portfolio/portfolio-8.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Card 3</h4>
-                        <p>Card</p>
-                        <a href="{% static 'img/portfolio/portfolio-8.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <img src="{% static 'img/portfolio/portfolio-9.jpg' %}" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4>Web 3</h4>
-                        <p>Web</p>
-                        <a href="{% static 'img/portfolio/portfolio-9.jpg' %}" data-gall="portfolioGallery"
-                            class="venobox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                        <a href="portfolio-details.html" class="details-link" title="More Details"><i
-                                class="bx bx-link"></i></a>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 
@@ -357,9 +249,9 @@
 
             <div class="section-title">
                 <h2 data-aos="fade-up">Đội ngũ kĩ thuật</h2>
-                <p data-aos="fade-up">Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga
-                    eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-                    suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <p data-aos="fade-up">Với đội ngũ kĩ thuật nhiệt tình, giàu kinh nghiệm, trách nhiệp cao đối với công
+                    việc, Audio Top tự tin phục vụ và làm hài lòng mọi đối tượng khách hàng, dù là những
+                    người khó tính Nhất.</p>
             </div>
 
             <div class="row">
