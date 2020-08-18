@@ -1,6 +1,7 @@
 import os
 import uuid
 from django.db import models
+from taggit_autosuggest.managers import TaggableManager
 from django_summernote.models import AbstractAttachment
 from django_summernote.utils import get_attachment_storage
 
@@ -16,7 +17,7 @@ def path_attachment_file_name(instance, filename):
     return os.path.join("projects", "attachment", filename)
 
 
-class Tag(models.Model):
+class Category(models.Model):
     title = models.CharField(max_length=200, null=True, blank=False)
     slug = models.SlugField(max_length=200, null=True, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -33,7 +34,12 @@ class Project(models.Model):
     content = models.TextField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     thumb = models.ImageField(upload_to=path_file_name, null=True)
-    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
+    category = models.ManyToManyField(
+        Category, related_name='categories', blank=True)
+    tags = TaggableManager()
+
+    class Meta:
+        ordering = ['-created_on']
 
     def __str__(self):
         return str(self.title)

@@ -103,15 +103,21 @@
                 {% endcomment %}
             </div>
 
+
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="active"><a href="{% url 'trang-chu' %}">Trang chủ</a></li>
-                    <li><a href="{% url 'trang-chu' %}#about">Giới thiệu</a></li>
-                    <li><a href="{% url 'project-list' %}">Dự án nổi bật</a></li>
-                    <li><a href="{% url 'speaker-list' %}">Thiết bị âm thanh</a></li>
-                    <li><a href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
-                    <li><a href="{% url 'blog-list' %}">Blog</a></li>
-                    <li><a href="{% url 'trang-chu' %}">Liên hệ</a></li>
+                    <li class="{% if app_url == 'home' %} active{% endif %}"><a
+                            href="{% url 'trang-chu' %}">Giới thiệu</a></li>                    
+                    <li class="{% if app_url == 'project' %} active{% endif %}"><a
+                            href="{% url 'project-list' %}">Dự án nổi bật</a></li>
+                    <li class="{% if app_url == 'speaker' %} active{% endif %}"><a
+                            href="{% url 'speaker-list' %}">Thiết bị âm thanh</a></li>
+                    <li class="{% if app_url == 'lighting' %} active{% endif %}"><a
+                            href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
+                    <li class="{% if app_url == 'blog' %} active{% endif %}"><a
+                            href="{% url 'blog-list' %}">Blog</a></li>
+                    <li class="{% if app_url == '' %} active{% endif %}"><a
+                            href="{% url 'trang-chu' %}">Liên hệ</a></li>
 
                 </ul>
             </nav><!-- .nav-menu -->

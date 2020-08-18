@@ -1,6 +1,7 @@
 from project import models
 from django.contrib import admin
 from django.utils.html import format_html
+from django.shortcuts import get_object_or_404
 
 # Summer note
 from django_summernote.admin import SummernoteModelAdmin, AttachmentAdmin
@@ -35,10 +36,16 @@ def get_img_urls(html_content, obj):
             # Remove string /media/
             print(image['src'][7:])
             imageObject = models.Image.objects.get(file=image['src'][7:])
-            imageObject.project = obj
-            print(type(obj).__name__)
-            imageObject.save()
-            print(imageObject)
+            try:
+                projectObject = models.Project.objects.get(slug=obj.slug)
+                imageObject.project = projectObject
+            except models.Project.DoesNotExist:
+                print("This project is note exsits: %s", str(obj.slug))
+                # projectObject = get_object_or_404(models.Project, slug = obj.slug)
+                # if projectObject:
+        print(type(obj).__name__)
+        imageObject.save()
+        print(imageObject)
     return img_urls
 
 
@@ -56,7 +63,7 @@ class ImageAdmin(AttachmentAdmin):
     get_foreignkey.short_description = "Project"
 
 
-class TagAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', )}
 
 
@@ -72,7 +79,7 @@ class ProjectAdmin(SummernoteModelAdmin):
         return form
 
     def get_tags(self, obj):
-        return ",".join([tag.title for tag in obj.tags.all()])
+        return ",".join([tag.name for tag in obj.tags.all()])
     get_tags.short_description = "TAGS"
 
     def get_thumb(self, obj):
@@ -86,5 +93,5 @@ class ProjectAdmin(SummernoteModelAdmin):
 
 
 admin.site.register(models.Image, ImageAdmin)
-admin.site.register(models.Tag, TagAdmin)
+admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Project, ProjectAdmin)

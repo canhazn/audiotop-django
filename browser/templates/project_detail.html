@@ -35,17 +35,23 @@
                 <div class="portfolio-info">
                     <h3>Thông tin dự án</h3>
                     <ul>
-                        {% for tag in project.tags.all %}
-                        <li><strong>Category</strong>: {{ tag.title }}</li>
-                        {% endfor %}
+                        <li><strong>Category</strong>:
+                            {% for tag in project.tags.all %}
+                                {% if forloop.last %}
+                                    <span>{{ tag.name }}</span>
+                                {% else %}
+                                    <span>{{ tag.name }}</span>,
+                                {% endif %}
+                            {% endfor %}
+                        </li>
                         {% if project.client %}
                         <li><strong>Client</strong>: {{ project.client }}</li>
                         {% endif %}
 
                         <li><strong>Project date</strong>: {{ project.created_on }}</li>
 
-                        {% if project.facebookurl %}
-                        <li><strong>Facebook URL</strong>: <a href="{{ project.facebookurl }}"></a></li>
+                        {% if project.address %}
+                        <li><strong>Address</strong>: {{ project.address }}</li>
                         {% endif %}
 
                     </ul>
@@ -55,9 +61,9 @@
 
             <div class="portfolio-description">
                 <h2>{{ project.title }}</h2>
-                <p>
+                <div class="project-content">
                     {{ project.content |safe}}
-                </p>
+                </div>
             </div>
         </div>
     </section><!-- End Portfolio Details Section -->

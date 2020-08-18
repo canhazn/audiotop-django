@@ -11,6 +11,7 @@ def blogList(request):
     blog_serializer = serializers.BlogSerializer(
         blog_queryset, many=True)    
     context = {
+    "app_url": "blog",
         "blogs": blog_serializer.data
     }
 
@@ -22,6 +23,7 @@ def blogDetail(request, slug):
     related_blog = blog.tags.similar_objects()[:4]
     print(related_blog)
     context = {
+    "app_url": "blog",
         "blog": blog,        
         "related_blog": related_blog
     }

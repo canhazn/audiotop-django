@@ -13,6 +13,7 @@ def productList(request):
         product_queryset, many=True)
 
     context = {
+        "app_url": "speaker",
         "products": product_serializer.data
     }
 
@@ -24,6 +25,7 @@ def productDetail(request, slug):
     related_product = product.tags.similar_objects()[:4]
     print(related_product)
     context = {
+        "app_url": "speaker",
         "product": product,        
         "related_product": related_product
     }

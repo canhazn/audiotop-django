@@ -2,9 +2,9 @@ from project import models
 from rest_framework import serializers
 
 
-class TagSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Tag
+        model = models.Category
         fields = "__all__"
 
 
