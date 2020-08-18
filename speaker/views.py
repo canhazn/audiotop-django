@@ -23,7 +23,11 @@ def productList(request):
 def productDetail(request, slug):
     product = get_object_or_404(models.Product, slug=slug)
     related_product = product.tags.similar_objects()[:4]
-    print(related_product)
+    
+    for p in related_product:
+        p.classname = p.__class__.__name__        
+        print(p.__class__.__name__)
+
     context = {
         "app_url": "speaker",
         "product": product,        

@@ -106,18 +106,18 @@
 
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    <li class="{% if app_url == 'home' %} active{% endif %}"><a
-                            href="{% url 'trang-chu' %}">Giới thiệu</a></li>                    
-                    <li class="{% if app_url == 'project' %} active{% endif %}"><a
-                            href="{% url 'project-list' %}">Dự án nổi bật</a></li>
-                    <li class="{% if app_url == 'speaker' %} active{% endif %}"><a
-                            href="{% url 'speaker-list' %}">Thiết bị âm thanh</a></li>
+                    <li class="{% if app_url == 'home' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Giới
+                            thiệu</a></li>
+                    <li class="{% if app_url == 'project' %} active{% endif %}"><a href="{% url 'project-list' %}">Dự án
+                            nổi bật</a></li>
+                    <li class="{% if app_url == 'speaker' %} active{% endif %}"><a href="{% url 'speaker-list' %}">Thiết
+                            bị âm thanh</a></li>
                     <li class="{% if app_url == 'lighting' %} active{% endif %}"><a
                             href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
-                    <li class="{% if app_url == 'blog' %} active{% endif %}"><a
-                            href="{% url 'blog-list' %}">Blog</a></li>
-                    <li class="{% if app_url == '' %} active{% endif %}"><a
-                            href="{% url 'trang-chu' %}">Liên hệ</a></li>
+                    <li class="{% if app_url == 'blog' %} active{% endif %}"><a href="{% url 'blog-list' %}">Blog</a>
+                    </li>
+                    <li class="{% if app_url == '' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Liên hệ</a>
+                    </li>
 
                 </ul>
             </nav><!-- .nav-menu -->
@@ -151,30 +151,29 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'trang-chu' %}">Giới thiệu</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'project-list' %}">Dự án nổi bật</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'speaker-list' %}">Thiết bị âm thanh</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'blog-list' %}">Blog</a></li>                            
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt âm thanh bar, karaoke...</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Nhập khẩu loa HK - Đức</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt ánh sáng chuyên nghiệp</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Sửa chữa thiết bị âm thanh</a></li>                            
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>Đăng kí nhận thông tin mới nhất từ Audio Top</p>
                         <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Subscribe">
+                            <input type="email" name="email"><input type="submit" value="Đăng kí">
                         </form>
                     </div>
 

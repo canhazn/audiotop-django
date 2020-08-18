@@ -36,7 +36,7 @@
                         </div>
                     </div>
 
-                    <div class="videos-anh-sang my-3">
+                    <div class="videos-anh-sang my-3" data-aos="fade-up" data-aos-delay="200">
                         <p class="title text-center">Những màn trình diễn đỉnh cao:</p>
                         <div class='video'> <iframe src='https://www.youtube.com/embed/IBcakHjGa10' frameborder='0'
                                 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
@@ -60,7 +60,7 @@
                             <div class="icon-box mb-4">
                                 <img class="product-thumb" src="{{ product.thumb }}" alt="">
                                 <div class="p-3">
-                                    <h4>{{ product.title }}</h4>
+                                    <p class="text-center">{{ product.title }}</p>
                                     {% comment %} {{ product }} {% endcomment %}
                                     {% for tag in product.tags %}
                                     <p>{{ tag.name }}</p>
