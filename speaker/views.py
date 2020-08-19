@@ -23,7 +23,14 @@ def productList(request):
 
 def productDetail(request, slug):
     product = get_object_or_404(models.Product, slug=slug)
+
     product.description = html2text(product.content)   
+    tags = product.tags.all()
+    product.titleTag = product.title
+    for tag in tags:
+        if tag: 
+            product.titleTag += ' | %s' % (tag.name)           
+    
 
     related_product = product.tags.similar_objects()[:4]
     

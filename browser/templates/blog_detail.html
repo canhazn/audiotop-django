@@ -2,6 +2,23 @@
 {%load static %}
 
 {% block extrahead %}
+<!-- genaral tag -->
+<title>{{ blog.titleTag | truncatechars:100 }}</title>
+<meta name="description" content="{{ blog.description | truncatechars:300}}">
+<link rel="canonical" href="https://www.audiotop.vn/thiet-bi-anh-sang/{{ blog.slug }}" />
+
+
+<!-- Facebook tag -->
+<meta property="og:locale" content="vi_VN" />
+<meta property="fb:app_id" content="544193865986544" />
+<meta id="fbType" property="og:type" content="article" />
+<meta property="og:title" content="{{ blog.titleTag | truncatechars:100 }}">
+<meta property="og:description" content="{{ blog.description | truncatechars:300}}">
+<meta property="og:image" content="/browser/{{ blog.thumb }}">
+<meta property="og:url" content="https://www.audiotop.vn/thiet-bi-anh-sang/{{ blog.slug }}">
+<meta property="og:site_name" content="www.audiotop.vn" />
+
+
 <link rel="stylesheet" href="{% static 'css/lighting_list.css' %}">
 {% endblock extrahead %}
 

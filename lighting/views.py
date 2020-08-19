@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from lighting import models, serializers
+from html2text import html2text
 
 TEMPLATE_LIST = 'lighting_list.html'
 TEMPLATE_DETAIL = 'lighting_detail.html'
@@ -22,11 +23,19 @@ def productList(request):
 
 def productDetail(request, slug):
     product = get_object_or_404(models.Produkt, slug=slug)
+
+    product.description = html2text(product.content)
+    tags = product.tags.all()
+    product.titleTag = product.title
+    for tag in tags:
+        if tag:
+            product.titleTag += ' | %s' % (tag.name)
+
     related_product = product.tags.similar_objects()[:4]
-    print(related_product)
+    
     context = {
         "app_url": "lighting",
-        "product": product,        
+        "product": product,
         "related_product": related_product
     }
     return render(request, TEMPLATE_DETAIL, context)

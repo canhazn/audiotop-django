@@ -1,12 +1,21 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
-    <title>Audiotop</title>
+    <meta charset="utf-8">
+    <base href="/">
     <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/x-icon" href="/browser/static/img/favicon.ico">
+    <link rel="shortcut icon" href="/browser/static/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/browser/static/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="/browser/static/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="/browser/static/img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="152x152" href="/browser/static/img/favicon.ico">
+
 
 
     <!-- Font, Icon -->
@@ -62,6 +71,12 @@
     <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128995452-2"></script>
+    <!-- <script type='text/javascript' src='//c.trazk.com/c.js?_key=8604450929' async='async' > </script> -->
+    <meta name="msvalidate.01" content="A024ACB378429C587C3237E6C3DB6606" />
 
 
     <!-- For extend header -->
@@ -151,21 +166,27 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'trang-chu' %}">Giới thiệu</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'project-list' %}">Dự án nổi bật</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'speaker-list' %}">Thiết bị âm thanh</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'blog-list' %}">Blog</a></li>                            
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'trang-chu' %}">Giới
+                                    thiệu</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'project-list' %}">Dự án nổi
+                                    bật</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'speaker-list' %}">Thiết bị
+                                    âm thanh</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'lighting-list' %}">Thiết bị
+                                    ánh sáng</a></li>
+                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'blog-list' %}">Blog</a>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt âm thanh bar, karaoke...</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt âm thanh bar, karaoke...</a>
+                            </li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Nhập khẩu loa HK - Đức</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt ánh sáng chuyên nghiệp</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Sửa chữa thiết bị âm thanh</a></li>                            
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Sửa chữa thiết bị âm thanh</a></li>
                         </ul>
                     </div>
 
