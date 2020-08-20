@@ -41,7 +41,9 @@
     <meta name="msvalidate.01" content="A024ACB378429C587C3237E6C3DB6606" />
 
 
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=544193865986544&autoLogAppEvents=1" nonce="8f8faXMN"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0&appId=544193865986544&autoLogAppEvents=1"
+        nonce="8f8faXMN"></script>
 
 
     <!-- For extend header -->
@@ -53,7 +55,16 @@
 
     <!-- define global variable on to of body -->
     <script language="javascript">
-        var STATIC_URL = "{% static ''%}";
+        var STATIC_URL = "{% static ''%}"; <
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '544193865986544',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v8.0'
+            });
+        };
     </script>
 
     <!-- ======= Top Bar ======= -->
@@ -199,7 +210,7 @@
 
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-    
+
     <!-- Vendor JS Files -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
