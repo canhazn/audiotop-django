@@ -41,11 +41,17 @@
     <meta name="msvalidate.01" content="A024ACB378429C587C3237E6C3DB6606" />
 
 
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v8.0"
+        nonce="NP9wWHhv"></script>
+
+
     <!-- For extend header -->
     {% block extrahead %}{% endblock extrahead %}
 </head>
 
 <body>
+    <div id="fb-root"></div>
+
     <!-- define global variable on to of body -->
     <script language="javascript">
         var STATIC_URL = "{% static ''%}";
@@ -57,8 +63,8 @@
             <div class="contact-info mr-auto">
                 <ul>
                     <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com">canhazn@gmail.com</a></li>
-                    <li><i class="icofont-phone"></i>Mr Luân: +84 36 2436789</li>
-                    <li><i class="icofont-phone"></i>Mr Việt: +84 36 5148888</li>
+                    <li><i class="icofont-phone"></i>Mr Luân: 036 243 6789</li>
+                    <li><i class="icofont-phone"></i>Mr Việt: 036 514 8888</li>
                     <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 9am - 5pm</li>
                 </ul>
 
@@ -119,8 +125,8 @@
                         <h3>Audio Top</h3>
                         <p>
                             Khu Vĩnh Quang, Mạo Khê, Đông Chiều, Quảng Ninh <br><br>
-                            <strong>Mr Luân:</strong> +84 36 2346789<br>
-                            <strong>Mr Việt:</strong> +84 36 5148888<br>
+                            <strong>Mr Luân:</strong> 036 234 6789<br>
+                            <strong>Mr Việt:</strong> 036 514 8888<br>
                             <strong>Email:</strong> canhazn@gmail.com<br>
                         </p>
                     </div>
@@ -179,8 +185,10 @@
                 </div>
             </div>
             <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=audiotop.vn" target="_blank" class="twitter"><i
+                        class="bx bxs-share"></i></a>
+                <a href="https://www.facebook.com/audiotop.vn" target="_blank" class="facebook"><i
+                        class="bx bxl-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
@@ -190,6 +198,9 @@
     <!-- End Footer -->
 
 
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    
     <!-- Vendor JS Files -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -204,7 +215,7 @@
 
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js'  %}"></script>
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
 
 </body>
 

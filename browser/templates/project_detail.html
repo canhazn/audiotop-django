@@ -57,18 +57,18 @@
                     <ul>
                         <li><strong>Category</strong>:
                             {% for tag in project.tags.all %}
-                                {% if forloop.last %}
-                                    <span>{{ tag.name }}</span>
-                                {% else %}
-                                    <span>{{ tag.name }}</span>,
-                                {% endif %}
+                            {% if forloop.last %}
+                            <span>{{ tag.name }}</span>
+                            {% else %}
+                            <span>{{ tag.name }}</span>,
+                            {% endif %}
                             {% endfor %}
                         </li>
                         {% if project.client %}
                         <li><strong>Client</strong>: {{ project.client }}</li>
                         {% endif %}
 
-                        <li><strong>Project date</strong>: {{ project.created_on }}</li>
+                        {% comment %} <li><strong>Project date</strong>: {{ project.created_on }}</li> {% endcomment %}
 
                         {% if project.address %}
                         <li><strong>Address</strong>: {{ project.address }}</li>
@@ -87,6 +87,9 @@
             </div>
         </div>
     </section><!-- End Portfolio Details Section -->
+
+
+    {% include "facebook_plug.html" %}
 
 </main><!-- End #main -->
 {% endblock content %}

@@ -7,3 +7,8 @@
 .owl-carousel .caption {
     text-align: center;
 }
+
+.facebook-plugin {
+    max-width: 1032px;
+    margin: 0 auto;
+}
