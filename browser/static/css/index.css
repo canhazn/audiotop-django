@@ -12,3 +12,52 @@
     max-width: 1032px;
     margin: 0 auto;
 }
+
+
+.pagination {
+    color: #7f6d68;
+}
+
+.pagination ul {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+
+.pagination li {
+    border: 1px solid #f2f2f2;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.pagination li.active {
+    background: white;
+}
+
+.pagination li a {
+    color: #989595;
+    padding: 7px 16px;
+    display: inline-block;
+}
+
+.pagination li.active,
+.pagination li:hover {
+    background: #ff5821;
+    border: 1px solid #ff5821;
+}
+
+.pagination li.active a,
+.pagination li:hover a {
+    color: #fff;
+}
+
+.pagination li.disabled {
+    background: #fff;
+    border: 1px solid #fdfcfc;
+}
+
+.pagination li.disabled i {
+    color: #dedede;
+    padding: 10px 16px;
+    display: inline-block;
+}

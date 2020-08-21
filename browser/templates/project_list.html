@@ -48,27 +48,56 @@
             </ul>
         </div>
     </div> {% endcomment %}
-    <section class="inner-page pt-3">
+    <section class="inner-page pt-3 blog">
         <div class="container">
-            <div class="icon-boxes d-flex flex-column justify-content-center">
-                <div class="row">
-                    {% for project in projects %}
-                    <a href="{% url 'project-detail' project.slug %}" class="col-xl-4 d-flex align-items-stretch"
-                        data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-box mb-4">
-                            <img src="{{ project.thumb }}" alt="">
-                            <div class="p-3">
-                                <p>{{ project.title }}</p>
-                                {% comment %} {{ project }} {% endcomment %}
-                                {% for tag in project.tags %}
-                                <p>{{ tag.title }}</p>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
 
-                </div>
+            <div class="row">
+                {% for project in page_obj %}
+                <a href="{% url 'project-detail' project.slug %}" class="col-xl-4 d-flex align-items-stretch"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box mb-4">
+                        <img src="/media/{{ project.thumb }}" alt="">
+                        <div class="p-3">
+                            <p>{{ project.title }}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+
+            </div>
+
+            <div class="blog-pagination text-center" data-aos="fade-up">
+
+                <ul class="justify-content-center">
+                    <!-- Previous button-->
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="{% url 'project-list' %}?page={{ page_obj.previous_page_number }}">
+                            <i class="icofont-rounded-left"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    <!-- List pages -->
+                    {% with ''|center:page_obj.paginator.num_pages as range %}
+                    {% for _ in range %}
+                    <li class="{% if forloop.counter == page_obj.number %}active{% endif %}">
+                        <a href="{% url 'project-list' %}?page={{ forloop.counter }}">{{ forloop.counter }}</a>
+                    </li>
+                    {% endfor %}
+                    {% endwith %}
+
+
+                    <!-- Next button -->
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="{% url 'project-list' %}?page={{ page_obj.next_page_number }}">
+                            <i class="icofont-rounded-right"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                </ul>
             </div>
         </div>
     </section>
