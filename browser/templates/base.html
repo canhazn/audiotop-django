@@ -51,7 +51,7 @@
 </head>
 
 <body>
-
+    {% include 'pre_load.html' %}
     <!-- define global variable on to of body -->
     <script language="javascript">
         var STATIC_URL = "{% static ''%}";
@@ -67,149 +67,160 @@
     </script>
     <div id="fb-root"></div>
 
-    <!-- ======= Top Bar ======= -->
-    <section id="topbar" class="d-none d-lg-block">
-        <div class="container d-flex">
-            <div class="contact-info mr-auto">
-                <ul>
-                    <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com">canhazn@gmail.com</a></li>
-                    <li><i class="icofont-phone"></i>Mr Luân: 036 243 6789</li>
-                    <li><i class="icofont-phone"></i>Mr Việt: 036 514 8888</li>
-                    <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 9am - 5pm</li>
-                </ul>
-
-            </div>
-            <div class="cta">
-                <a href="#about" class="scrollto">Get Started</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= Header ======= -->
-    <header id="header">
-        <div class="container d-flex">
-
-            <div class="logo mr-auto">
-                <h1 class="text-light"><a href="{% url 'trang-chu' %}"><span>Audio Top</span></a></h1>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                {% comment %} <a href=""><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a>
-                {% endcomment %}
-            </div>
+    <div id="main-content" class="blur-backgroud">
 
 
-            <nav class="nav-menu d-none d-lg-block">
-                <ul>
-                    <li class="{% if app_url == 'home' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Giới
-                            thiệu</a></li>
-                    <li class="{% if app_url == 'project' %} active{% endif %}"><a href="{% url 'project-list' %}">Dự án
-                            nổi bật</a></li>
-                    <li class="{% if app_url == 'speaker' %} active{% endif %}"><a href="{% url 'speaker-list' %}">Thiết
-                            bị âm thanh</a></li>
-                    <li class="{% if app_url == 'lighting' %} active{% endif %}"><a
-                            href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
-                    <li class="{% if app_url == 'blog' %} active{% endif %}"><a href="{% url 'blog-list' %}">Blog</a>
-                    </li>
-                    <li class="{% if app_url == '' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Liên hệ</a>
-                    </li>
-
-                </ul>
-            </nav><!-- .nav-menu -->
-
-        </div>
-    </header>
-    <!-- End Header -->
-
-
-
-    {% block content %}
-    {% endblock %}
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-
-                    <div id="contact" class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Audio Top</h3>
-                        <p>
-                            Khu Vĩnh Quang, Mạo Khê, Đông Chiều, Quảng Ninh <br><br>
-                            <strong>Mr Luân:</strong> 036 234 6789<br>
-                            <strong>Mr Việt:</strong> 036 514 8888<br>
-                            <strong>Email:</strong> canhazn@gmail.com<br>
-                        </p>
-                    </div>
-
-                    <div class="col-lg-2 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
-                        <ul>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'trang-chu' %}">Giới
-                                    thiệu</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'project-list' %}">Dự án nổi
-                                    bật</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'speaker-list' %}">Thiết bị
-                                    âm thanh</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'lighting-list' %}">Thiết bị
-                                    ánh sáng</a></li>
-                            <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'blog-list' %}">Blog</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
-                        <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt âm thanh bar, karaoke...</a>
-                            </li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Nhập khẩu loa HK - Đức</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt ánh sáng chuyên nghiệp</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Sửa chữa thiết bị âm thanh</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 footer-newsletter">
-                        <h4>Join Our Newsletter</h4>
-                        <p>Đăng kí nhận thông tin mới nhất từ Audio Top</p>
-                        <form action="" method="post">
-                            <input type="email" name="email"><input type="submit" value="Đăng kí">
-                        </form>
-                    </div>
+        <!-- ======= Top Bar ======= -->
+        <section id="topbar" class="d-none d-lg-block">
+            <div class="container d-flex">
+                <div class="contact-info mr-auto">
+                    <ul>
+                        <li><i class="icofont-envelope"></i><a href="mailto:contact@example.com">canhazn@gmail.com</a>
+                        </li>
+                        <li><i class="icofont-phone"></i>Mr Luân: 036 243 6789</li>
+                        <li><i class="icofont-phone"></i>Mr Việt: 036 514 8888</li>
+                        <li><i class="icofont-clock-time icofont-flip-horizontal"></i> Mon-Fri 9am - 5pm</li>
+                    </ul>
 
                 </div>
-            </div>
-        </div>
-
-        <div class="container d-lg-flex py-4">
-
-            <div class="mr-lg-auto text-center text-lg-left">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>Audio Top</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">FreelanceWeb</a>
+                <div class="cta">
+                    <a href="#about" class="scrollto">Get Started</a>
                 </div>
             </div>
-            <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=audiotop.vn" target="_blank" class="twitter"><i
-                        class="bx bxs-share"></i></a>
-                <a href="https://www.facebook.com/audiotop.vn" target="_blank" class="facebook"><i
-                        class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </section>
+
+        <!-- ======= Header ======= -->
+        <header id="header">
+            <div class="container d-flex">
+
+                <div class="logo mr-auto">
+                    <h1 class="text-light"><a href="{% url 'trang-chu' %}"><span>Audio Top</span></a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    {% comment %} <a href=""><img src="{% static 'img/logo.png' %}" alt="" class="img-fluid"></a>
+                    {% endcomment %}
+                </div>
+
+
+                <nav class="nav-menu d-none d-lg-block">
+                    <ul>
+                        <li class="{% if app_url == 'home' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Giới
+                                thiệu</a></li>
+                        <li class="{% if app_url == 'project' %} active{% endif %}"><a
+                                href="{% url 'project-list' %}">Dự án
+                                nổi bật</a></li>
+                        <li class="{% if app_url == 'speaker' %} active{% endif %}"><a
+                                href="{% url 'speaker-list' %}">Thiết
+                                bị âm thanh</a></li>
+                        <li class="{% if app_url == 'lighting' %} active{% endif %}"><a
+                                href="{% url 'lighting-list' %}">Thiết bị ánh sáng</a></li>
+                        <li class="{% if app_url == 'blog' %} active{% endif %}"><a
+                                href="{% url 'blog-list' %}">Blog</a>
+                        </li>
+                        <li class="{% if app_url == '' %} active{% endif %}"><a href="{% url 'trang-chu' %}">Liên hệ</a>
+                        </li>
+
+                    </ul>
+                </nav><!-- .nav-menu -->
+
             </div>
-        </div>
-    </footer>
-    <!-- End Footer -->
+        </header>
+        <!-- End Header -->
 
 
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+        {% block content %}
+        {% endblock %}
+
+        <!-- ======= Footer ======= -->
+        <footer id="footer">
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div id="contact" class="col-lg-3 col-md-6 footer-contact">
+                            <h3>Audio Top</h3>
+                            <p>
+                                Khu Vĩnh Quang, Mạo Khê, Đông Chiều, Quảng Ninh <br><br>
+                                <strong>Mr Luân:</strong> 036 234 6789<br>
+                                <strong>Mr Việt:</strong> 036 514 8888<br>
+                                <strong>Email:</strong> canhazn@gmail.com<br>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'trang-chu' %}">Giới
+                                        thiệu</a></li>
+                                <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'project-list' %}">Dự án
+                                        nổi
+                                        bật</a></li>
+                                <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'speaker-list' %}">Thiết
+                                        bị
+                                        âm thanh</a></li>
+                                <li class=""><i class="bx bx-chevron-right"></i><a
+                                        href="{% url 'lighting-list' %}">Thiết bị
+                                        ánh sáng</a></li>
+                                <li class=""><i class="bx bx-chevron-right"></i><a href="{% url 'blog-list' %}">Blog</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Our Services</h4>
+                            <ul>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt âm thanh bar, karaoke...</a>
+                                </li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Nhập khẩu loa HK - Đức</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Lắp đặt ánh sáng chuyên nghiệp</a>
+                                </li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="#">Sửa chữa thiết bị âm thanh</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 footer-newsletter">
+                            <h4>Join Our Newsletter</h4>
+                            <p>Đăng kí nhận thông tin mới nhất từ Audio Top</p>
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Đăng kí">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container d-lg-flex py-4">
+
+                <div class="mr-lg-auto text-center text-lg-left">
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Audio Top</span></strong>. All Rights Reserved
+                    </div>
+                    <div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexor-free-multipurpose-bootstrap-template/ -->
+                        Designed by <a href="https://bootstrapmade.com/">FreelanceWeb</a>
+                    </div>
+                </div>
+                <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=audiotop.vn" target="_blank"
+                        class="twitter"><i class="bx bxs-share"></i></a>
+                    <a href="https://www.facebook.com/audiotop.vn" target="_blank" class="facebook"><i
+                            class="bx bxl-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                    <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+
+
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+    </div>
 
     <!-- Vendor JS Files -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
@@ -225,6 +236,7 @@
 
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js'  %}"></script>
+    <script src="{% static 'js/index.js'  %}"></script>
 
 
 </body>
