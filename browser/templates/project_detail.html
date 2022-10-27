@@ -55,7 +55,7 @@
                 <div class="portfolio-info">
                     <h3>Thông tin dự án</h3>
                     <ul>
-                        <li><strong>Category</strong>:
+                        <li><strong>Danh mục</strong>:
                             {% for tag in project.tags.all %}
                             {% if forloop.last %}
                             <span>{{ tag.name }}</span>
@@ -65,13 +65,13 @@
                             {% endfor %}
                         </li>
                         {% if project.client %}
-                        <li><strong>Client</strong>: {{ project.client }}</li>
+                        <li><strong>Khách hàng</strong>: {{ project.client }}</li>
                         {% endif %}
 
                         {% comment %} <li><strong>Project date</strong>: {{ project.created_on }}</li> {% endcomment %}
 
                         {% if project.address %}
-                        <li><strong>Address</strong>: {{ project.address }}</li>
+                        <li><strong>Địa chỉ</strong>: {{ project.address }}</li>
                         {% endif %}
 
                     </ul>

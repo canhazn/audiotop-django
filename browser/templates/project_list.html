@@ -37,7 +37,7 @@
         </div>
     </section><!-- End Breadcrumbs -->
 
-    {% comment %} <div class="row" data-aos="fade-up" data-aos-delay="100">
+    {% comment %} <div class="row" data-aos="fade-up" data-aos-delay="0">
         <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
                 {% for tag in tags %}
@@ -53,7 +53,7 @@
             <div class="row">
                 {% for project in page_obj %}
                 <a href="{% url 'project-detail' project.slug %}" class="col-xl-4 d-flex align-items-stretch"
-                    data-aos="fade-up" data-aos-delay="100">
+                    data-aos="fade-up" data-aos-delay="0">
                     <div class="icon-box mb-4">
                         <img src="/media/{{ project.thumb }}" alt="">
                         <div class="p-3">
