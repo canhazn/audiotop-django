@@ -1,3 +1,6 @@
 /.venv
 /.venv-ubuntu
 /.vscode
+
+**/__pycache__/
+*.pyc
