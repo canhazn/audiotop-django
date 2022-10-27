@@ -27,7 +27,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    class Meta:
+        ordering = ['index']
     title = models.CharField(max_length=200, null=False, blank=False)
+    index = models.IntegerField(blank=True, null=True)
     slug = models.SlugField(max_length=200, null=False, blank=False)
     content = models.TextField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
