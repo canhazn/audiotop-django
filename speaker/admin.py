@@ -63,7 +63,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
-    list_display = ('slug', 'title', 'get_tags',  'get_thumb')
+    list_display = ('slug','index' ,'title', 'get_tags',  'get_thumb')
     prepopulated_fields = {'slug': ('title', )}
 
     # Change django sumernote attachment object every time init form
